@@ -1,0 +1,8 @@
+.dropzone-drop-area {
+    background-color: lightcyan;
+    border: dashed 3px grey;
+    box-sizing: border-box;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}

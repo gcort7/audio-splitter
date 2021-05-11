@@ -1,0 +1,11 @@
+---
+version: '3'
+services: 
+  music_console:
+    build: .
+    command: npm run debug
+    ports: 
+      - 3000:3000
+      - 9229:9229 # enabled for debugger
+    volumes:
+      - ./:/usr/src/app/
