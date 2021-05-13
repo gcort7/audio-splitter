@@ -5,7 +5,7 @@ async function isListening(server) {
     return new Promise((resolve, reject) => {
         server.on('error', reject),
         server.on('listening', () => { 
-            resolve(console.log('this is working pretty well...'));
+            resolve(console.log('this is working well...'));
         });
     });   
 }
