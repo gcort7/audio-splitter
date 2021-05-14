@@ -11,7 +11,22 @@
 		<div>
 			<form id="uploader" action="/musicHandler" method="post" enctype="multipart/form-data">
 				<fieldset>
-					<input type="file" name="fileselect" id="fileselect"/>
+					<div>
+						<span>
+							Output
+						</span> 
+						<div>
+							<input type="checkbox" name="stems" value="2stems">
+							<label for="stems">Vocal and Karaoke</label>
+	
+							<input type="checkbox" name="stems" value="4stems">
+							<label for="stems">Bass, Drums, Vocal and Others</label>
+	
+							<input type="checkbox" name="stems" value="5stems">
+							<label for="stems">Piano, Bass, Drums, Vocal and Others</label>
+						</div>
+					</div>
+					<input multiple type="file" name="fileselect" id="fileselect"/>
 				</fieldset>
 				<div>
 					<button type="submit">Submit</button>
