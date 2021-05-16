@@ -5,7 +5,8 @@ const formidable = require('formidable');
 async function splitSongUp(song_data){
 	const audio_path = '/usr/src/app/src/express/public/music/';
 	song_data['files_names'].forEach(song => {
-		command = 'sapleeter separate -p spleeter:' + song_data['stems'] + ' -o output ' + song;
+		command = 'spleeter separate -p spleeter:' + song_data['stems'] + ' -o output ' + song;
+		console.log(command)
 		exec(command, {cwd: audio_path}, (error, stdout, stderr) => {
 			if (error) {
 				console.log(`error: ${error.message}`);
