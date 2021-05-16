@@ -11,12 +11,8 @@ module.exports = {
 		app.set('views', __dirname + '/views');
 		app.use(express.static(__dirname + '/public'));
 
-		app.get('/home', (req, res) => {
-			res.render('index');
-		});
-
 		app.get('/', (req, res) => {
-			res.redirect('/home');
+			res.render('index');
 		});
 
 		app.post('/musicHandler', async (req, res) => {

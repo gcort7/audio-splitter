@@ -37,9 +37,7 @@ async function saveSongOnDisk(req){
 		.on('fileBegin', function (fileselect, file){
 			file.path = path.join(music_path, file.name);
 			result['files_names'].push(file.name);
-			if(Object.keys(file).length/5 == result['files_names'].length){
-				resolve(result);
-			}
+			resolve(result);
 		})
 		.on('error', reject);
 	}); 
