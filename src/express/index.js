@@ -18,9 +18,8 @@ module.exports = {
 		app.post('/musicHandler', async (req, res) => {
 			const result = await music_console.saveSongOnDisk(req);
 			await music_console.splitSongUp(result);
-			res.writeHead(200, { 'Content-Type': 'application/json' });
-			res.end(JSON.stringify(result, null, 2));
-			return;
+			const outputs = await music_console.getOutputFiles(result);
+			res.render('tracks', { outputs : outputs });
 		});
 
 		return app;

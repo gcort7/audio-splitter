@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<% outputs.forEach(function(song_route){ %>
+			<audio controls>
+				<source src="/music/output/<%= song_route %>"  type="audio/mpeg">
+			Your browser does not support the audio element.
+			</audio>
+		<% }) %>
+	</body>
+</html>
