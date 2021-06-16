@@ -5,7 +5,7 @@ const fs = require('fs');
 
 async function splitSongUp(song_data){
 	return new Promise((resolve, reject) => {
-		const audio_path = '/usr/src/app/src/express/public/music/';
+		const audio_path = path.normalize(process.env['MUSIC_PATH']);
 		song_data['files_names'].forEach(song => {
 			command = 'spleeter separate -p spleeter:' + song_data['stems'] + ' -o output ' + song;
 			console.log(command)
@@ -29,7 +29,8 @@ async function saveSongOnDisk(req){
 			'stems': null,
 			'files_names': []
 		};
-		const music_path = "/usr/src/app/src/express/public/music/";
+
+		const music_path = path.normalize(process.env['MUSIC_PATH']);
 		const form = formidable({ multiples: true });
 
 		form.parse(req)
@@ -52,7 +53,7 @@ async function getOutputFiles(song_data){
 		song_data['files_names'].forEach(song => {
 			var outputs = {};
 			var folder_name = song.slice(0, -4);
-			var output_folder = path.join('/usr/src/app/src/express/public/music/output/', folder_name);
+			var output_folder = path.normalize(`${process.env['MUSIC_PATH']}/output/${folder_name}`);
 			outputs = [];
 			fs.readdir(output_folder, (err, files) => {
 				if (err){

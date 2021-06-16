@@ -13,7 +13,7 @@
 			</span>
 		</div>
 		<div>
-			<form id="uploader" action="/musicHandler" method="post" enctype="multipart/form-data">
+			<form method="POST" action="/musicHandler" enctype="multipart/form-data">
 				<div>
 					<div id="split-options">
 						<input type="checkbox" name="stems" value="2stems">
@@ -29,12 +29,11 @@
 						<div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
 						<header>Drag & Drop to upload File</header>
 						<span>OR</span>
-						<input type="file" name="fileselect" id="fileselect"/>
+						<input name="fileselect" type="file"/>
 						<button type="submit">Submit</button>
 					</div>
 				</div>
 			</form>
 		</div>
-		<script src="js/dropfiles.js"></script>
 	</body>
 </html>

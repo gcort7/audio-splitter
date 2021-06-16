@@ -9,3 +9,6 @@ services:
       - 9229:9229 # enabled for debugger
     volumes:
       - ./:/usr/src/app/
+    environment: 
+      MUSIC_PATH: /usr/src/app/src/express/public/music/
+      
