@@ -4,7 +4,8 @@
 		<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 		<title>Audio splitter</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+		<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+		<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 	</head>
 	<body>
 		<div id="description">
@@ -13,9 +14,9 @@
 			</span>
 		</div>
 		<div>
-			<form method="POST" action="/musicHandler" enctype="multipart/form-data">
+			<form class="dropzone" method="POST" action="/musicHandler" enctype="multipart/form-data">
 				<div>
-					<div id="split-options">
+					<div>
 						<input type="checkbox" name="stems" value="2stems">
 						<label for="stems">Vocal and Karaoke</label>
 
@@ -24,13 +25,6 @@
 
 						<input type="checkbox" name="stems" value="5stems">
 						<label for="stems">Piano, Bass, Drums, Vocal and Others</label>
-					</div>
-					<div id="drag-area">
-						<div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-						<header>Drag & Drop to upload File</header>
-						<span>OR</span>
-						<input name="fileselect" type="file"/>
-						<button type="submit">Submit</button>
 					</div>
 				</div>
 			</form>

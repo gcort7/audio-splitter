@@ -7,7 +7,7 @@ async function splitSongUp(song_data){
 	return new Promise((resolve, reject) => {
 		const audio_path = path.normalize(process.env['MUSIC_PATH']);
 		song_data['files_names'].forEach(song => {
-			command = 'spleeter separate -p spleeter:' + song_data['stems'] + ' -o output ' + song;
+			command = `spleeter separate -p spleeter:${song_data['stems']} -o output ${song}`;
 			console.log(command)
 			exec(command, {cwd: audio_path}, (error, stdout, stderr) => {
 				if (error) {
@@ -37,7 +37,7 @@ async function saveSongOnDisk(req){
 		.on('field', function(stems, stems) {
 			result['stems'] = stems;
 		})
-		.on('fileBegin', function (fileselect, file){
+		.on('fileBegin', function (file, file){
 			file.path = path.join(music_path, file.name);
 			result['files_names'].push(file.name);
 			resolve(result);
