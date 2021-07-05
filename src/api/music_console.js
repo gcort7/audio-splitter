@@ -3,11 +3,11 @@ const path  = require('path');
 const formidable = require('formidable');
 const fs = require('fs');
 
-async function splitSongUp(song_data){
+async function splitSongUp(folders){
 	return new Promise((resolve, reject) => {
 		const audio_path = path.normalize(process.env['MUSIC_PATH']);
-		song_data['files_names'].forEach(song => {
-			command = `spleeter separate -p spleeter:${song_data['stems']} -o output ${song}`;
+		folders['files_names'].forEach(song => {
+			command = `spleeter separate -p spleeter:${folders['stems']} -o output ${song}`;
 			console.log(command)
 			exec(command, {cwd: audio_path}, (error, stdout, stderr) => {
 				if (error) {
@@ -46,22 +46,19 @@ async function saveSongOnDisk(req){
 	}); 
 }
 
-async function getOutputFiles(song_data){
+async function getOutputFiles(folders){
 	return new Promise((resolve, reject) => {
-		const number_songs = Number(song_data['files_names'].length);
-		const number_stems = Number(song_data['stems'].slice(0,1));
-		song_data['files_names'].forEach(song => {
-			var outputs = {};
+		folders.forEach(song => {
 			var folder_name = song.slice(0, -4);
 			var output_folder = path.normalize(`${process.env['MUSIC_PATH']}/output/${folder_name}`);
-			outputs = [];
+			var outputs = [];
 			fs.readdir(output_folder, (err, files) => {
 				if (err){
 					reject(err);
 				}
 				files.forEach(file => {
 					outputs.push(folder_name + '/' + file);
-					if(outputs.length == number_stems*number_songs){
+					if(outputs.length == files.length){
 						resolve(outputs);
 					}
 				});

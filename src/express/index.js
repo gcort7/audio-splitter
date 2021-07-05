@@ -17,13 +17,13 @@ module.exports = {
 		app.post('/musicHandler', async (req, res, next) => {
 			const result = await music_console.saveSongOnDisk(req);
 			await music_console.splitSongUp(result);
-			// const outputs = await music_console.getOutputFiles(result);
 			res.status(201).end();
-			// res.render('tracks', { outputs : outputs });
 		});	
 
-		app.get('/tracks', (req, res, next) => {
-			res.render('tracks');
+		app.get('/tracks/:folders', async (req, res, next) => {
+			const folders = req.params.folders.split(',')
+			const outputs = await music_console.getOutputFiles(folders);
+			res.render('tracks', { outputs : outputs });
 		});
 
 		app.use((req, res, next) => {

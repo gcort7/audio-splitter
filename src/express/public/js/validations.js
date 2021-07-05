@@ -5,19 +5,6 @@ Dropzone.options.myDropzone = {
 	maxFilesize: 10,
 	acceptedFiles: "audio/*",
 	success: function(file, response){
-		window.location.pathname = "/tracks";
+		window.location.pathname = "/tracks/" + file.name;
 	}
   };
-// function validations(){
-// 	var stems = "";
-// 	var checkStems = document.getElementsByName("stems");
-// 	checkStems.forEach(stemSelected => {
-// 		if(stemSelected.checked){
-// 			stems = stemSelected;
-// 		}
-// 	});
-
-// 	if(!stems){
-		
-// 	}
-// }
