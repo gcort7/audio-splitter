@@ -8,3 +8,9 @@ Dropzone.options.myDropzone = {
 		window.location.pathname = "/tracks/" + file.name;
 	}
   };
+
+  
+  function lightMode() {
+	var element = document.body;
+	element.classList.toggle("light-mode");
+  }

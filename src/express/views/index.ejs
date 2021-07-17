@@ -1,34 +1,36 @@
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-		<title>Audio splitter</title>
-		<link rel="stylesheet" href="css/style.css">
-		<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-		<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
-	</head>
-	<body>
-		<div id="description">
-			<span>
-				Audio Splitter
-			</span>
-		</div>
-		<div>
-			<form id="my-dropzone" class="dropzone" method="POST" action="/musicHandler" enctype="multipart/form-data">
-				<div>
-					<div>
-						<input type="radio" name="stems" value="2stems">
-						<label for="stems">Vocal and Karaoke</label>
 
-						<input type="radio" name="stems" value="4stems">
-						<label for="stems">Bass, Drums, Vocal and Others</label>
-
-						<input type="radio" name="stems" value="5stems">
-						<label for="stems">Piano, Bass, Drums, Vocal and Others</label>
-					</div>
+<%- include ('./header') -%>
+		<form id="my-dropzone" class="dropzone" method="POST" action="/musicHandler" enctype="multipart/form-data">
+			<div class="flex buttons">
+				<div class="button" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="500" data-aos-duration="200">
+					<label>
+					<input type="radio" name="stems" value="2stems" />
+					<i class="fa fa-circle" aria-hidden="true"></i> 
+					<span><b>Vocal and Karaoke</b> <br />(<i class="fa fa-file-audio-o" aria-hidden="true"></i> <small>x2 tracks</small>)</span>
+					</label>
 				</div>
-			</form>
-		</div>
-		<script src="js/validations.js"></script>
-	</body>
-</html>
+				<div class="button" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="700" data-aos-duration="200">
+					<label>
+					<input type="radio" name="stems" value="4stems" />
+					<i class="fa fa-circle" aria-hidden="true"></i>
+					<span><b>Bass, Drums, Vocal and Others</b> <br />(<i class="fa fa-file-audio-o" aria-hidden="true"></i> <small>x4 tracks</small>)</span>
+					</label>
+				</div>
+				<div class="button" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="900" data-aos-duration="200">
+					<label>
+					<input type="radio" name="stems" value="5stems" />
+					<i class="fa fa-circle" aria-hidden="true"></i>
+					<span><b>Piano, Bass, Drums, Vocal and Others</b> <br />(<i class="fa fa-file-audio-o" aria-hidden="true"></i> <small>x5 tracks</small>)</span>
+					</label>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+	<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+	<script src="js/validations.js"></script>
+</body>
+<%- include ('./footer') -%>
