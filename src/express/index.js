@@ -2,6 +2,7 @@ const express = require('express');
 const path  = require('path');
 const music_console = require('../api/music_console');
 const formidable = require('formidable');
+const { basename } = require('path');
 
 module.exports = {
 	async boot() {
@@ -9,6 +10,7 @@ module.exports = {
 		app.set('view engine', 'ejs');
 		app.set('views', path.join(__dirname, 'views'));
 		app.use(express.static(path.join(__dirname, 'public')));
+		app.use('/tracks', express.static(path.join(__dirname, 'public')));
 
 		app.get('/', (req, res, next) => {
 			res.render('index');
@@ -21,7 +23,7 @@ module.exports = {
 		});	
 
 		app.get('/tracks/:folders', async (req, res, next) => {
-			const folders = req.params.folders.split(',')
+			const folders = req.params.folders.split(',');
 			const outputs = await music_console.getOutputFiles(folders);
 			res.render('tracks', { outputs : outputs });
 		});

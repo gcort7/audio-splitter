@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	</head>
-	<body>
+<%- include ('./header') -%>
+	<div>
 		<% outputs.forEach(function(song_route){ %>
 			<audio controls>
 				<source src="/music/output/<%= song_route %>"  type="audio/mpeg">
 			Your browser does not support the audio element.
 			</audio>
 		<% }) %>
-	</body>
-</html>
+	</div>
+	</div>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+	<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+	<script src="js/validations.js"></script>
+</body>
+<%- include ('./footer') -%>
