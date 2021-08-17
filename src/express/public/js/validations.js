@@ -10,12 +10,12 @@ Dropzone.options.myDropzone = {
 			options = document.getElementsByName("stems");
 			options.forEach(element => {
 				if (element.checked) {
-					alert(element.value);
+					
 				}
 			});
 		});
 		this.on("success", function(file) { 
-			window.location.pathname = "/tracks/" + file.name;
+			alert('the upload was successful...')
 		});
 	},
 };

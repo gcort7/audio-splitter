@@ -17,7 +17,11 @@ ENV PATH "/opt/miniconda/bin:${PATH}"
 WORKDIR /usr/src/app/
 
 RUN conda install -c conda-forge ffmpeg libsndfile
+RUN conda install python=3.8
 RUN pip install spleeter
+
+RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+RUN chmod a+rx /usr/local/bin/youtube-dl
 
 COPY package.json package-lock.json /usr/src/app/
 

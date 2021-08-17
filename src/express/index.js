@@ -1,8 +1,7 @@
 const express = require('express');
 const path  = require('path');
 const music_console = require('../api/music_console');
-const formidable = require('formidable');
-const { basename } = require('path');
+const bodyParser = require('body-parser')
 
 module.exports = {
 	async boot() {
@@ -12,21 +11,37 @@ module.exports = {
 		app.use(express.static(path.join(__dirname, 'public')));
 		app.use('/tracks', express.static(path.join(__dirname, 'public')));
 
+		app.use(bodyParser.urlencoded({
+			extended: true
+		}));
+
+		app.use(bodyParser.json());
+
+
 		app.get('/', (req, res, next) => {
 			res.render('index');
 		});
 
-		app.post('/musicHandler', async (req, res, next) => {
-			const result = await music_console.saveSongOnDisk(req);
-			await music_console.splitSongUp(result);
+		app.post('/uploadAudio', async (req, res, next) => {
+			await music_console.saveSongOnDisk(req);
 			res.status(201).end();
-		});	
-
-		app.get('/tracks/:folders', async (req, res, next) => {
-			const folders = req.params.folders.split(',');
-			const outputs = await music_console.getOutputFiles(folders);
-			res.render('tracks', { outputs : outputs });
 		});
+
+		app.post('/musicHandler', async (req, res, next) => {
+			var result = {
+				'stems': req.body.stems,
+				'files_names': ['audio_file.mp3']
+			};
+
+			if(req.body.youtube_url){
+				await music_console.downloadYoutubeSong(req.body.youtube_url);
+			}
+
+			await music_console.splitSongUp(result);
+
+			const outputs = await music_console.getOutputFiles(result['files_names']);
+			res.render('tracks', { outputs : outputs });
+		});	
 
 		app.use((req, res, next) => {
 			const error = new Error('Not found, go to: http://localhost:3000/');
