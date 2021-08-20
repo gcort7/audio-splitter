@@ -43,6 +43,13 @@ module.exports = {
 			res.render('tracks', { outputs : outputs });
 		});	
 
+		// this route is only for testing purposes
+		app.get('/tracks/:folders', async (req, res, next) => {
+			const folders = req.params.folders.split(',')
+			const outputs = await music_console.getOutputFiles(folders);
+			res.render('tracks', { outputs : outputs });
+		});
+
 		app.use((req, res, next) => {
 			const error = new Error('Not found, go to: http://localhost:3000/');
 			error.status = 404;
