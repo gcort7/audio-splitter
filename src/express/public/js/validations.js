@@ -1,3 +1,13 @@
+window.addEventListener('load', function () {
+	document.querySelector("#splitter").style.visibility = "visible";
+	document.querySelector("#loader").style.visibility = "hidden";
+});
+
+window.addEventListener('onload', spinner);
+
+const form = document.getElementById('audio_splitter');
+form.addEventListener('submit', spinner);
+
 Dropzone.options.myDropzone = {
 	paramName: "file",
 	uploadMultiple: false,
@@ -7,15 +17,10 @@ Dropzone.options.myDropzone = {
 	timeout: 180000,
 	init: function() {
 		this.on("drop", function(file) { 
-			options = document.getElementsByName("stems");
-			options.forEach(element => {
-				if (element.checked) {
-					
-				}
-			});
+			document.getElementById('submit-button').disabled = true;
 		});
 		this.on("success", function(file) { 
-			alert('the upload was successful...')
+			document.getElementById('submit-button').disabled = false;
 		});
 	},
 };
@@ -23,4 +28,8 @@ Dropzone.options.myDropzone = {
 function lightMode() {
 	var element = document.body;
 	element.classList.toggle("light-mode");
+}
+
+function spinner() {
+	document.querySelector("#loader").style.visibility = "visible";
 }

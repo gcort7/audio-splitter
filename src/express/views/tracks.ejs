@@ -1,11 +1,12 @@
 <%- include ('./header') -%>
 	<div class="audio-box-style">
 		<% outputs.forEach(function(song_route){ %>
-			<div>
+			<div style="margin: 10px;display: flex">
 				<audio controls>
-					<source src="/music/output/<%= song_route %>"  type="audio/mpeg">
+					<source src="/music/output/<%= song_route %>" type="audio/mpeg">
 				Your browser does not support the audio element.
 				</audio>
+				<p> - <%= song_route %></p>
 			</div>
 		<% }) %>
 	</div>

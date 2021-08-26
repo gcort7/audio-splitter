@@ -1,98 +1,466 @@
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@700&family=Poppins:wght@300'); 
-
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@700&family=Poppins:wght@300');
 :root {
-  --color-white: #fff;
-  --color-light: #b4b4b4;
-  --color-gray: #494545;
-  --color-gray-dark: #363333;
-  --color-dark: #201e1e;
-  --color-black: #000;
-  --color-gradient: linear-gradient(0deg, rgba(54,51,51,1) 0%, rgba(54,51,51,0) 75%);
+	--color-white: #fff;
+	--color-light: #b4b4b4;
+	--color-gray: #494545;
+	--color-gray-dark: #363333;
+	--color-dark: #201e1e;
+	--color-black: #000;
+	--color-gradient: linear-gradient(0deg, rgba(54, 51, 51, 1) 0%, rgba(54, 51, 51, 0) 75%);
 }
 
-*{ margin: 0; padding: 0; box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; font-family: "Poppins", sans-serif; }
-html {cursor:default; scroll-behavior:smooth;}
-body { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh;font-size:1em; background:var(--color-dark); color:var(--color-white); -webkit-transition: all .5s ease; transition: all .5s ease;}
-a{color: var(--color-light); cursor:pointer;} a:hover{color:var(--color-white);}
-h1 {font-family: "Maven Pro", sans-serif; font-size: 5em; margin:0.25em auto; position: relative; z-index: 3;}
-h2 {font-size:2.5em; margin:0.5em auto 0.25em auto;}
-p {margin:0.5em;}
-footer {padding:0 1em 2em 1em;}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
 
-.toggle-mode {font-size:2em; position:fixed; z-index:4; top:1em; right:1em;}
-.cover {width:100%; min-height:100vh;}
-.flex { display: flex; align-items: center; justify-content: center; }
-.hero{position:relative; top:25%; } 
-.logo {width:150px; height:150px; margin:0 auto; background: url("../images/audio-splitter.png") no-repeat center center; background-size: 150px 150px;}
+html {
+	cursor: default;
+	scroll-behavior: smooth;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	font-size: 1em;
+	background: var(--color-dark);
+	color: var(--color-white);
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+a {
+	color: var(--color-light);
+	cursor: pointer;
+}
+
+a:hover {
+	color: var(--color-white);
+}
+
+h1 {
+	font-family: "Maven Pro", sans-serif;
+	font-size: 5em;
+	margin: 0.25em auto;
+	position: relative;
+	z-index: 3;
+}
+
+h2 {
+	font-size: 2.5em;
+	margin: 0.5em auto 0.25em auto;
+}
+
+p {
+	margin: 0.5em;
+}
+
+footer {
+	padding: 0 1em 2em 1em;
+}
+
+.toggle-mode {
+	font-size: 2em;
+	position: fixed;
+	z-index: 4;
+	top: 1em;
+	right: 1em;
+}
+
+.cover {
+	width: 100%;
+	min-height: 100vh;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero {
+	position: relative;
+	top: 25%;
+}
+
+.logo {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+	background: url("../images/audio-splitter.png") no-repeat center center;
+	background-size: 150px 150px;
+}
+
+
 /*video-background*/
-.vimeo-wrapper {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden;}
-.vimeo-wrapper iframe {
-width: 100vw;
-height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
-min-height: 100vh;
-min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
-position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.35;
+
+.vimeo-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	pointer-events: none;
+	overflow: hidden;
 }
 
-#description {height:100vh; margin:0 auto; align-items:center; text-align:center; position:relative; overflow:hidden;}
-#description a span { position: absolute; bottom: 24px; left: 50%; width: 24px; height: 24px; margin-left: -12px; border-left: 1px solid var(--color-white); border-bottom: 1px solid var(--color-white); -webkit-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-animation: sdb04 2s infinite; animation: sdb04 2s infinite; box-sizing: border-box; }
-@-webkit-keyframes sdb04 { 0% { -webkit-transform: rotate(-45deg) translate(0, 0); } 20% { -webkit-transform: rotate(-45deg) translate(-10px, 10px); } 40% { -webkit-transform: rotate(-45deg) translate(0, 0); } }
-@keyframes sdb04 { 0% { transform: rotate(-45deg) translate(0, 0); } 20% { transform: rotate(-45deg) translate(-10px, 10px); } 40% { transform: rotate(-45deg) translate(0, 0); } }
-#splitter {padding:2em; align-items:center; text-align:center; background: var(--color-dark); color: var(--color-light);}
+.vimeo-wrapper iframe {
+	width: 100vw;
+	height: 56.25vw;
+	/* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+	min-height: 100vh;
+	min-width: 177.77vh;
+	/* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0.35;
+}
 
-.buttons{border-radius:25px; background: var(--color-dark); box-shadow: -20px -20px 60px rgba(0, 0, 0, 0.25), 20px 20px 60px var(--color-dark);}
-.button{width:33%; padding:0.5em;}
-.button label {width:100%; display:block; position:relative; padding:0.5em; color: var(--color-light); font-size:1em; cursor:pointer !important;}
-.button label input {-webkit-appearance:none; appearance:none;}
-.button label input:checked ~ span{color:var(--color-white); cursor:pointer !important;} 
-.button label .fa.fa-circle { position: relative; width: 40px; height: 40px; float:left; background: var(--color-dark); line-height: 40px; text-align: center; margin: 0 4px; color: var(--color-gray); font-size: 1.25em; border-radius: 50%; box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8); }
-.button label .fa.fa-circle:hover, .button label input:hover ~ .fa.fa-circle { box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8), inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 0.5); }
-.button label input:checked ~ .fa.fa-circle { color: var(--color-white); box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 1); text-shadow: 0 0 5px var(--color-white), 0 0 20px var(--color-white);}
+#description {
+	height: 100vh;
+	margin: 0 auto;
+	align-items: center;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+#description a span {
+	position: absolute;
+	bottom: 24px;
+	left: 50%;
+	width: 24px;
+	height: 24px;
+	margin-left: -12px;
+	border-left: 1px solid var(--color-white);
+	border-bottom: 1px solid var(--color-white);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-animation: sdb04 2s infinite;
+	animation: sdb04 2s infinite;
+	box-sizing: border-box;
+}
+
+@-webkit-keyframes sdb04 {
+	0% {
+		-webkit-transform: rotate(-45deg) translate(0, 0);
+	}
+	20% {
+		-webkit-transform: rotate(-45deg) translate(-10px, 10px);
+	}
+	40% {
+		-webkit-transform: rotate(-45deg) translate(0, 0);
+	}
+}
+
+@keyframes sdb04 {
+	0% {
+		transform: rotate(-45deg) translate(0, 0);
+	}
+	20% {
+		transform: rotate(-45deg) translate(-10px, 10px);
+	}
+	40% {
+		transform: rotate(-45deg) translate(0, 0);
+	}
+}
+
+#splitter {
+	padding: 2em;
+	align-items: center;
+	text-align: center;
+	background: var(--color-dark);
+	color: var(--color-light);
+}
+
+.buttons {
+	border-radius: 25px;
+	background: var(--color-dark);
+	box-shadow: -20px -20px 60px rgba(0, 0, 0, 0.25), 20px 20px 60px var(--color-dark);
+}
+
+.button {
+	width: 33%;
+	padding: 0.5em;
+}
+
+.button label {
+	width: 100%;
+	display: block;
+	position: relative;
+	padding: 0.5em;
+	color: var(--color-light);
+	font-size: 1em;
+	cursor: pointer !important;
+}
+
+.button label input {
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.button label input:checked~span {
+	color: var(--color-white);
+	cursor: pointer !important;
+}
+
+.button label .fa.fa-circle {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	float: left;
+	background: var(--color-dark);
+	line-height: 40px;
+	text-align: center;
+	margin: 0 4px;
+	color: var(--color-gray);
+	font-size: 1.25em;
+	border-radius: 50%;
+	box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.button label .fa.fa-circle:hover,
+.button label input:hover~.fa.fa-circle {
+	box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8), inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.button label input:checked~.fa.fa-circle {
+	color: var(--color-white);
+	box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 1);
+	text-shadow: 0 0 5px var(--color-white), 0 0 20px var(--color-white);
+}
+
 
 /*dropzone*/
-#my-dropzone{margin:2em auto; background:transparent; border:2px dashed var(--color-gray); /*height:65vh;*/ border-radius:25px; -webkit-transition: all .5s ease; transition: all .5s ease; cursor: grab;}
-#my-dropzone:hover{-webkit-transition: all .5s ease; transition: all .5s ease; border-color:var(--color-white); background: rgb(54,51,51); background: var(--color-gradient);
-box-shadow: inset 0 0 30px var(--color-light), inset 20px 0 30px var(--color-gray-dark), inset -20px 0 30px var(--color-gray), inset 20px 0 90px var(--color-gray-dark), -10px 0 30px var(--color-gray-dark), 10px 0 30px var(--color-gray);}	
-.dropzone{}
-.dz-default {position:relative; margin:-125px auto; padding-top:125px; font-size:1.5em !important; color: var(--color-gray); background: url("../images/box-2.svg") no-repeat center center; background-size: 100px 100px;}
-.dz-preview {margin:2em !important; /*width:100%;*/}
-.dz-file-preview { }
-.dz-details { }
-.dz-processing .dz-error .dz-complete { }
-.dz-image { }
+
+#my-dropzone {
+	margin: 2em auto;
+	background: transparent;
+	border: 2px dashed var(--color-gray);
+	/*height:65vh;*/
+	border-radius: 25px;
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+	cursor: grab;
+}
+
+#my-dropzone:hover {
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+	border-color: var(--color-white);
+	background: rgb(54, 51, 51);
+	background: var(--color-gradient);
+	box-shadow: inset 0 0 30px var(--color-light), inset 20px 0 30px var(--color-gray-dark), inset -20px 0 30px var(--color-gray), inset 20px 0 90px var(--color-gray-dark), -10px 0 30px var(--color-gray-dark), 10px 0 30px var(--color-gray);
+}
+
+.dropzone {}
+
+.dz-default {
+	position: relative;
+	margin: -125px auto;
+	padding-top: 125px;
+	font-size: 1.5em !important;
+	color: var(--color-gray);
+	background: url("../images/box-2.svg") no-repeat center center;
+	background-size: 100px 100px;
+}
+
+.dz-preview {
+	margin: 2em !important;
+	/*width:100%;*/
+}
+
+.dz-file-preview {}
+
+.dz-details {}
+
+.dz-processing .dz-error .dz-complete {}
+
+.dz-image {}
 
 
 /*light-mode*/
-.light-mode { background-color:var(--color-white); color:var(--color-dark); -webkit-transition: all .5s ease; transition: all .5s ease; /*0.25s ease-in-out*/}
-.light-mode a{color: var(--color-gray-dark);} .light-mode a:hover{color:var(--color-black);}
-.light-mode #description a span { border-left-color: var(--color-dark); border-bottom-color: 1px solid var(--color-dark);}
-.light-mode .logo {width:150px; height:150px; background: url("../images/audio-splitter_dark.png") no-repeat center center; background-size: 150px 150px;}
-.light-mode #splitter {background: var(--color-white); color: var(--color-gray);}
-.light-mode .buttons{border-radius:25px; background: var(--color-white); box-shadow: -20px -20px 60px var(--color-light), 20px 20px 60px var(--color-light);}
-.light-mode .button label {color: var(--color-gray);}
-.light-mode .button label input:checked ~ span{color:var(--color-black)} 
-.light-mode .button label .fa.fa-circle { background: var(--color-white); color: var(--color-light); box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8); }
-.light-mode .button label .fa.fa-circle:hover, .light-mode .button label input:hover ~ .fa.fa-circle { box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8), inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 0.5); }
-.light-mode .button label input:checked ~ .fa.fa-circle { color: var(--color-black); box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 1); text-shadow: 0 0 5px var(--color-black), 0 0 20px var(--color-black);}
-.light-mode #my-dropzone{border:2px dashed var(--color-gray);}
-.light-mode #my-dropzone:hover{border-color:var(--color-gray-dark); background: transparent; box-shadow: inset 0 0 30px var(--color-light), inset 20px 0 30px var(--color-light), inset -20px 0 30px var(--color-light), inset 20px 0 90px var(--color-light), -10px 0 30px var(--color-light), 10px 0 30px var(--color-light);}	
-#my-tracks{margin:2em auto; background:transparent; border:2px dashed var(--color-gray); /*height:65vh;*/ border-radius:25px; -webkit-transition: all .5s ease; transition: all .5s ease; cursor: grab;}
-#my-tracks:hover{-webkit-transition: all .5s ease; transition: all .5s ease; border-color:var(--color-white); background: rgb(54,51,51); background: var(--color-gradient);
-box-shadow: inset 0 0 30px var(--color-light), inset 20px 0 30px var(--color-gray-dark), inset -20px 0 30px var(--color-gray), inset 20px 0 90px var(--color-gray-dark), -10px 0 30px var(--color-gray-dark), 10px 0 30px var(--color-gray);}
-#youtube_url{background:transparent;background-color:transparent;border-radius:25px;border:none;height:7%;width:100%;align-items:center;justify-content:center;}
-.box-style{border:2px dashed var(--color-gray);border-radius:25px;}
-#youtube_url, select, textarea{color:#ffffff;text-align:center;outline: none;}
-.submit-style {position:relative;top:50px;left:630px;background-color:#ffffff38;height:5%;width:7%;border-radius:25px;color:white;font-weight :bold;font-size:16px;}
-.audio-box-style{border:2px dashed var(--color-gray);border-radius:25px;height:50%;width:50%;align-items:center;}
+
+.light-mode {
+	background-color: var(--color-white);
+	color: var(--color-dark);
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+	/*0.25s ease-in-out*/
+}
+
+.light-mode a {
+	color: var(--color-gray-dark);
+}
+
+.light-mode a:hover {
+	color: var(--color-black);
+}
+
+.light-mode #description a span {
+	border-left-color: var(--color-dark);
+	border-bottom-color: 1px solid var(--color-dark);
+}
+
+.light-mode .logo {
+	width: 150px;
+	height: 150px;
+	background: url("../images/audio-splitter_dark.png") no-repeat center center;
+	background-size: 150px 150px;
+}
+
+.light-mode #splitter {
+	background: var(--color-white);
+	color: var(--color-gray);
+}
+
+.light-mode .buttons {
+	border-radius: 25px;
+	background: var(--color-white);
+	box-shadow: -20px -20px 60px var(--color-light), 20px 20px 60px var(--color-light);
+}
+
+.light-mode .button label {
+	color: var(--color-gray);
+}
+
+.light-mode .button label input:checked~span {
+	color: var(--color-black)
+}
+
+.light-mode .button label .fa.fa-circle {
+	background: var(--color-white);
+	color: var(--color-light);
+	box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.light-mode .button label .fa.fa-circle:hover,
+.light-mode .button label input:hover~.fa.fa-circle {
+	box-shadow: -1px -1px 3px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8), inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.light-mode .button label input:checked~.fa.fa-circle {
+	color: var(--color-black);
+	box-shadow: inset -2px -2px 10px rgba(255, 255, 255, 0.05), inset 2px 2px 10px rgba(0, 0, 0, 1);
+	text-shadow: 0 0 5px var(--color-black), 0 0 20px var(--color-black);
+}
+
+.light-mode #my-dropzone {
+	border: 2px dashed var(--color-gray);
+}
+
+.light-mode #my-dropzone:hover {
+	border-color: var(--color-gray-dark);
+	background: transparent;
+	box-shadow: inset 0 0 30px var(--color-light), inset 20px 0 30px var(--color-light), inset -20px 0 30px var(--color-light), inset 20px 0 90px var(--color-light), -10px 0 30px var(--color-light), 10px 0 30px var(--color-light);
+}
+
+#my-tracks {
+	margin: 2em auto;
+	background: transparent;
+	border: 2px dashed var(--color-gray);
+	/*height:65vh;*/
+	border-radius: 25px;
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+	cursor: grab;
+}
+
+#my-tracks:hover {
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+	border-color: var(--color-white);
+	background: rgb(54, 51, 51);
+	background: var(--color-gradient);
+	box-shadow: inset 0 0 30px var(--color-light), inset 20px 0 30px var(--color-gray-dark), inset -20px 0 30px var(--color-gray), inset 20px 0 90px var(--color-gray-dark), -10px 0 30px var(--color-gray-dark), 10px 0 30px var(--color-gray);
+}
+
+#youtube_url {
+	background: transparent;
+	background-color: transparent;
+	border-radius: 25px;
+	border: none;
+	height: 7%;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.box-style {
+	border: 2px dashed var(--color-gray);
+	border-radius: 25px;
+}
+
+#youtube_url,
+select,
+textarea {
+	color: #ffffff;
+	text-align: center;
+	outline: none;
+}
+
+.submit-style {
+	position: relative;
+	top: 50px;
+	left: 630px;
+	background-color: #ffffff38;
+	height: 5%;
+	width: 7%;
+	border-radius: 25px;
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.audio-box-style {
+	margin: auto;
+	padding: 20px;
+	border: 2px dashed var(--color-gray);
+	border-radius: 25px;
+	height: auto;
+	width: 50%;
+	align-items: center;
+}
 
 
 /*responsive-breakpoints*/
-@media (max-width: 62em){
-   h1 {font-size: 3em;}
-  .toggle-mode {top:0.5em; right:0.5em;}
-  .flex { display: block; }
-  .logo, .light-mode .logo {width:100px; height:100px; background-size: 100px 100px;}
-  .button{width:100%; border-bottom:1px solid rgba(0, 0, 0, 0.3);}
-  .button:nth-last-child(1) {border-bottom:none;}
-  .dz-default {margin:-150px auto; padding-top:150px;
+
+@media (max-width: 62em) {
+	h1 {
+		font-size: 3em;
+	}
+	.toggle-mode {
+		top: 0.5em;
+		right: 0.5em;
+	}
+	.flex {
+		display: block;
+	}
+	.logo,
+	.light-mode .logo {
+		width: 100px;
+		height: 100px;
+		background-size: 100px 100px;
+	}
+	.button {
+		width: 100%;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	}
+	.button:nth-last-child(1) {
+		border-bottom: none;
+	}
+	.dz-default {
+		margin: -150px auto;
+		padding-top: 150px;
+	}
 }

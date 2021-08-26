@@ -1,9 +1,10 @@
 
 <%- include ('./header') -%>
-	<h2>How does it works?</h2>
+	<h2>How does it work?</h2>
 	<p>Audio Splitter is using SPLEETER library which is a state of the art AI library.<br />
 		SPLEETER uses machine learning models to separate the musical track of each instrument based on its frequency.</p> 
-		<form method="POST" action="/musicHandler">
+		<div id="loader" class="center"></div>
+		<form id="audio_splitter" method="POST" action="/musicHandler">
 			<div class="flex buttons box-style">
 				<div class="button" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="500" data-aos-duration="200">
 					<label>
@@ -27,15 +28,15 @@
 					</label>
 				</div>
 			</div>
-			<p><b>Type the youtube URL for the video you want to process and then submit.</b></p>
+			<p><b>Type the youtube URL for the video you want to process and then submit</b></p>
 			<div class="box-style">
 				<input class="disable-text" type="text" id="youtube_url" name="youtube_url">
 			</div>
 			<div>
-				<input class="submit-style" type="submit" value="submit">
+				<input class="submit-style" id="submit-button" type="submit" value="submit">
 			</div>
 		</form>
-		<p><b>Or drag and drop or just click the dashed area below to upload an audio format file and then submit.</b></p>
+		<p><b>Or drag and drop your file into the dashed area below to upload an audio format file and then click submit.</b></p>
 		<form id="my-dropzone" class="dropzone" method="POST" action="/uploadAudio" enctype="multipart/form-data">
 		</form>
 	</div>
