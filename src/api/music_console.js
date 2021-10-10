@@ -1,4 +1,4 @@
-const { exec } = require("child_process");
+const { exec } = require('child_process');
 const path  = require('path');
 const formidable = require('formidable');
 const fs = require('fs');
@@ -74,9 +74,24 @@ async function downloadYoutubeSong(url){
 	})
 }
 
+async function removeFilesFromFolder(){
+	return new Promise((resolve, reject) => {
+		const audio_path = path.normalize(process.env['MUSIC_PATH']);
+		command = 'rm -rf *';
+		exec(command, {cwd: audio_path}, (error, stdout, stderr) => {
+			if (error) {
+				console.log(`error: ${error.message}`);
+				reject(error);
+			}
+			resolve('Files and folders were removed successfuly.');
+		});
+	})
+}
+
 module.exports = {
 	splitSongUp,
 	saveSongOnDisk,
 	getOutputFiles,
-	downloadYoutubeSong
+	downloadYoutubeSong,
+	removeFilesFromFolder
 }

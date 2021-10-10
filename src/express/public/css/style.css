@@ -412,12 +412,13 @@ textarea {
 .submit-style {
 	position: relative;
 	top: 50px;
-	left: 630px;
-	background-color: #ffffff38;
+	left: 46%;
 	height: 5%;
 	width: 7%;
 	border-radius: 25px;
-	color: white;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	color: var(--color-gray);
 	font-weight: bold;
 	font-size: 16px;
 }

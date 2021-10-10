@@ -18,7 +18,8 @@ module.exports = {
 		app.use(bodyParser.json());
 
 
-		app.get('/', (req, res, next) => {
+		app.get('/', async (req, res, next) => {
+			await music_console.removeFilesFromFolder();
 			res.render('index');
 		});
 
